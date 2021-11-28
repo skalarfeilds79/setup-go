@@ -160,7 +160,7 @@ export async function getInfoFromManifest(
   return info;
 }
 
-async function getInfoFromDist(
+export async function getInfoFromDist(
   versionSpec: string,
   stable: boolean
 ): Promise<IGoVersionInfo | null> {
@@ -205,9 +205,6 @@ export async function findMatch(
   for (let i = 0; i < candidates.length; i++) {
     let candidate: IGoVersion = candidates[i];
     let version = makeSemver(candidate.version);
-
-    core.info(`DEBUG: versionSpec: ${versionSpec}, candidate version: ${candidate.version}, semver version: ${version}`)
-    core.debug(`DEBUG: versionSpec: ${versionSpec}, candidate version: ${candidate.version}, semver version: ${version}`)
 
     // 1.13.0 is advertised as 1.13 preventing being able to match exactly 1.13.0
     // since a semver of 1.13 would match latest 1.13

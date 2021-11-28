@@ -7,6 +7,7 @@ import osm from 'os';
 import path from 'path';
 import * as main from '../src/main';
 import * as im from '../src/installer';
+import {makeSemver} from '../src/installer';
 
 let goJsonData = require('./data/golang-dl.json');
 let matchers = require('../matchers.json');
@@ -136,6 +137,24 @@ describe('setup-go', () => {
     expect(match!.downloadUrl).toBe(
       'https://github.com/actions/go-versions/releases/download/1.9.7/go-1.9.7-win32-x64.zip'
     );
+  });
+
+  it('getInfoFromDist returns correct URLs for unstable go versions', async () => {
+    os.platform = 'windows';
+    os.arch = 'amd64';
+
+    let testVersions: string[] = ["1.14.0-rc1", "1.17.0-rc2", "1.16.0-beta1"]
+
+    for (const i in testVersions) {
+      let match = await im.getInfoFromDist(testVersions[i], false);
+
+      expect(match).toBeDefined();
+      expect(makeSemver(match!.resolvedVersion)).toBe(testVersions[i]);
+      expect(match!.type).toBe('dist');
+      expect(match!.downloadUrl).toBe(
+        `https://storage.googleapis.com/golang/${match!.resolvedVersion}.${os.platform}-${os.arch}.zip`
+      );
+    }
   });
 
   it('finds stable match for exact dot zero version', async () => {
@@ -444,7 +463,8 @@ describe('setup-go', () => {
       return '/Users/testuser/go';
     });
 
-    mkdirpSpy.mockImplementation(async () => {});
+    mkdirpSpy.mockImplementation(async () => {
+    });
     existsSpy.mockImplementation(path => {
       return false;
     });
