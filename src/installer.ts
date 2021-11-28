@@ -164,6 +164,9 @@ async function getInfoFromDist(
   versionSpec: string,
   stable: boolean
 ): Promise<IGoVersionInfo | null> {
+
+  core.info("DEBUG: inside getInfoFromDist")
+
   let version: IGoVersion | undefined;
   version = await findMatch(versionSpec, stable);
   if (!version) {
