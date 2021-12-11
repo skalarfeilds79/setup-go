@@ -7,6 +7,7 @@ import fs from 'fs';
 import {URL} from 'url';
 
 export async function run() {
+  core.info("TODO: It's a beginning of run func!!!");
   try {
     //
     // versionSpec is optional.  If supplied, install / use from the tool cache
