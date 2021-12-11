@@ -70,6 +70,7 @@ export async function addBinToPath(): Promise<boolean> {
       // some of the hosted images have go install but not profile dir
       core.debug(`creating ${gp}`);
       io.mkdirP(gp);
+      core.exportVariable('GOPATH', gp); // TODO: I add `GOPATH` here
     }
 
     let bp = path.join(gp, 'bin');
