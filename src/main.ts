@@ -54,6 +54,7 @@ export async function run() {
 }
 
 export async function addBinToPath(): Promise<boolean> {
+  core.info('TODO: Inside addBinToPath func');
   let added = false;
   let g = await io.which('go');
   core.debug(`which go :${g}:`);
@@ -70,6 +71,7 @@ export async function addBinToPath(): Promise<boolean> {
       // some of the hosted images have go install but not profile dir
       core.debug(`creating ${gp}`);
       io.mkdirP(gp);
+      core.info('TODO: Adding GOPATH to envs');
       core.exportVariable('GOPATH', gp); // TODO: I add `GOPATH` here
     }
 
