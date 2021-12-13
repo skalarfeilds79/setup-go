@@ -1489,6 +1489,7 @@ const fs_1 = __importDefault(__webpack_require__(747));
 const url_1 = __webpack_require__(835);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
+        core.info("TODO: It's a beginning of run func!!!");
         try {
             //
             // versionSpec is optional.  If supplied, install / use from the tool cache
@@ -1530,6 +1531,7 @@ function run() {
 exports.run = run;
 function addBinToPath() {
     return __awaiter(this, void 0, void 0, function* () {
+        core.info('TODO: Inside addBinToPath func');
         let added = false;
         let g = yield io.which('go');
         core.debug(`which go :${g}:`);
@@ -1545,6 +1547,8 @@ function addBinToPath() {
                 // some of the hosted images have go install but not profile dir
                 core.debug(`creating ${gp}`);
                 io.mkdirP(gp);
+                core.info('TODO: Adding GOPATH to envs');
+                core.exportVariable('GOPATH', gp); // TODO: I add `GOPATH` here
             }
             let bp = path_1.default.join(gp, 'bin');
             if (!fs_1.default.existsSync(bp)) {
