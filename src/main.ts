@@ -40,8 +40,8 @@ export async function run() {
     core.info('TODO: A new matcher is added');
     const matchersPath = path.join(__dirname, '..', 'matchers_new.json');
     core.info(`##[add-matcher]${matchersPath}`);
-    console.log('../main.go:13:2: undefined: fmt.Printl');
-    console.log('foo/main.go:13:2: undefined: fmt.Printl');
+    // console.log('../main.go:13:2: undefined: fmt.Printl');
+    // console.log('foo/main.go:13:2: undefined: fmt.Printl');
 
     // output the version actually being used
     let goPath = await io.which('go');
