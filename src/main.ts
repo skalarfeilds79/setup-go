@@ -36,12 +36,12 @@ export async function run() {
     }
 
     // add problem matchers
-    // const matchersPath = path.join(__dirname, '..', 'matchers.json');
+    const matchersPath = path.join(__dirname, '..', 'matchers.json');
     core.info('TODO: A new matcher is added');
-    const matchersPath = path.join(__dirname, '..', 'matchers_new.json');
+    // const matchersPath = path.join(__dirname, '..', 'matchers_new.json');
     core.info(`##[add-matcher]${matchersPath}`);
-    // console.log('../main.go:13:2: undefined: fmt.Printl');
-    // console.log('foo/main.go:13:2: undefined: fmt.Printl');
+    console.log('../main.go:13:2: undefined: fmt.Printl23525252352353');
+    console.log('foo/main.go:13:2: undefined: fmt.Printl2');
 
     // output the version actually being used
     let goPath = await io.which('go');
