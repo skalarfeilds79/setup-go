@@ -1511,7 +1511,8 @@ function run() {
                 core.info(`Successfully setup go version ${versionSpec}`);
             }
             // add problem matchers
-            const matchersPath = path_1.default.join(__dirname, '..', 'matchers.json');
+            // const matchersPath = path.join(__dirname, '..', 'matchers.json');
+            const matchersPath = path_1.default.join(__dirname, '..', 'matchers_new.json');
             core.info(`##[add-matcher]${matchersPath}`);
             // output the version actually being used
             let goPath = yield io.which('go');

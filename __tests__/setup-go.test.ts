@@ -9,7 +9,8 @@ import * as main from '../src/main';
 import * as im from '../src/installer';
 
 let goJsonData = require('./data/golang-dl.json');
-let matchers = require('../matchers.json');
+// let matchers = require('../matchers.json');
+let matchers = require('../matchers_new.json');
 let goTestManifest = require('./data/versions-manifest.json');
 let matcherPattern = matchers.problemMatcher[0].pattern[0];
 let matcherRegExp = new RegExp(matcherPattern.regexp);
